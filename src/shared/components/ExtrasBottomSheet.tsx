@@ -11,7 +11,7 @@ import {
   toggleHotspot as toggleHotspotAction,
 } from '@/shared/lib/nativeActions';
 import type { HotspotState } from '@/shared/lib/nativeActions';
-import { PremiumCard, MenuRow, GlobalModal } from '@/shared/components';
+import { MenuRow, GlobalModal } from '@/shared/components';
 import { BottomSheet } from './BottomSheet';
 import '../../styles/components/extras-bottom-sheet.css';
 
@@ -157,8 +157,6 @@ export const ExtrasBottomSheet = memo(function ExtrasBottomSheet({
       height="82vh"
       className="extras-bs"
     >
-      <PremiumCard />
-
       {showCleanConfirm && (
         <GlobalModal
           onClose={() => setShowCleanConfirm(false)}

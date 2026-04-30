@@ -3,7 +3,6 @@ import { BottomSheet } from './BottomSheet';
 import { useTranslation } from '../../i18n/useTranslation';
 import { usePromo } from '../hooks/usePromo';
 import { useCoupons, Coupon } from '../hooks/useCoupons';
-import { getSdk } from '@/features/vpn/api/dtunnelSdk';
 import '../../styles/components/promo-bottom-sheet.css';
 
 interface PromoBottomSheetProps {
@@ -44,16 +43,6 @@ export const PromoBottomSheet = memo(function PromoBottomSheet({
     } catch {
       // ignore
     }
-  };
-
-  const openPlanes = () => {
-    const url = 'https://shop.jhservices.com.ar/planes';
-    const sdk = getSdk();
-    if (sdk) {
-      sdk.android.openExternalUrl(url);
-      return;
-    }
-    window.open(url, '_blank');
   };
 
   const badgeLabel =
@@ -112,9 +101,6 @@ export const PromoBottomSheet = memo(function PromoBottomSheet({
                   </div>
                 )}
               </div>
-              <button className="promo-action-btn" onClick={openPlanes}>
-                {t('promo.viewPlans')}
-              </button>
             </div>
           )}
 
@@ -135,11 +121,6 @@ export const PromoBottomSheet = memo(function PromoBottomSheet({
                   </div>
                 )}
               </div>
-              {!isPromoActive && (
-                <button className="promo-action-btn" onClick={openPlanes}>
-                  {t('promo.viewPlans')}
-                </button>
-              )}
             </div>
           )}
 

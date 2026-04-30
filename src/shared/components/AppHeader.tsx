@@ -1,7 +1,5 @@
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 import { useVpn } from '@/features/vpn';
-import { getSdk } from '@/features/vpn/api/dtunnelSdk';
-import { SubscribeButton } from './AppHeader/SubscribeButton';
 import { LanguageButton } from './AppHeader/LanguageButton';
 import { BackButton } from './AppHeader/BackButton';
 
@@ -28,27 +26,15 @@ export const AppHeader = memo(function AppHeader({ onMenuClick }: AppHeaderProps
     }
   };
 
-  const handleSubscribe = useCallback(() => {
-    const url = 'https://shop.jhservices.com.ar/planes';
-    const sdk = getSdk();
-    if (sdk) {
-      sdk.android.openExternalUrl(url);
-      return;
-    }
-    window.open(url, '_blank');
-  }, []);
-
   return (
     <header className="topbar">
+      <BackButton
+        isSubScreen={isSubScreen}
+        isCategoryDetail={isCategoryDetail}
+        onClick={handleClick}
+      />
+
       <div className="row">
-        <BackButton
-          isSubScreen={isSubScreen}
-          isCategoryDetail={isCategoryDetail}
-          onClick={handleClick}
-        />
-
-        <SubscribeButton onClick={handleSubscribe} />
-
         <LanguageButton />
       </div>
     </header>

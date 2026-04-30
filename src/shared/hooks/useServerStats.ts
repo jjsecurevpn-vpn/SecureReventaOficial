@@ -104,7 +104,11 @@ export function useServerStats(options: UseServerStatsOptions = {}) {
       const isFree = n.includes('GRATUITO') || n.includes('FREE');
       const wantsBrasil = n.includes('BRASIL') || n.includes('BRAZIL') || /\bBR\b/.test(n);
       const wantsArgentina = n.includes('ARGENTINA') || /\bAR\b/.test(n);
-      const wantsUsa = n.includes('USA') || n.includes('UNITED STATES') || /\bUS\b/.test(n);
+      const wantsUsa =
+        n.includes('USA') ||
+        n.includes('UNITED STATES') ||
+        n.includes('ESTADOS UNIDOS') ||
+        /\bUS\b/.test(n);
 
       const wantsTwo = /\b2\b/.test(n) || n.endsWith(' 2') || n.endsWith('2') || n.includes(' II');
       const wantsOne = /\b1\b/.test(n) || n.endsWith(' 1') || n.endsWith('1') || n.includes(' I');
@@ -221,9 +225,16 @@ export function useServerStats(options: UseServerStatsOptions = {}) {
         return findByIncludes(['GRATUITO']);
       }
 
-      // USA -> PREMIUM USA / GRATUITO USA
-      if (n.includes('USA') || n.includes('UNITED STATES')) {
-        return findByIncludes(['USA']);
+      // USA -> PREMIUM 1 USA / PREMIUM 2 USA
+      if (n.includes('USA') || n.includes('UNITED STATES') || n.includes('ESTADOS UNIDOS')) {
+        if (n.includes(' 2') || n.endsWith('2') || n.includes('II')) {
+          return findByIncludes(['PREMIUM', '2', 'USA']) || findByIncludes(['2', 'USA']);
+        }
+        return (
+          findByIncludes(['PREMIUM', '1', 'USA']) ||
+          findByIncludes(['1', 'USA']) ||
+          findByIncludes(['USA'])
+        );
       }
 
       // Fallback: match parcial por tokens

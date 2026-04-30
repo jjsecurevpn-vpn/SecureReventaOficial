@@ -1,6 +1,12 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { destroySdk, getSdk } from '@/features/vpn/api/dtunnelSdk';
 
+import '@/styles/base.css';
+import '@/styles/layout.css';
+import '@/styles/responsive.css';
+import '@/styles/animations.css';
+import '@/styles/ui-elements.css';
+
 // VPN Feature Screens (features/vpn/ui/screens/ + api + context)
 import {
   VpnProvider,
@@ -32,7 +38,6 @@ import {
   AppHeader,
   BottomTabs,
   ExtrasBottomSheet,
-  PromoBottomSheet,
   LogsBottomSheet,
   AccountBottomSheet,
   ImportBottomSheet,
@@ -40,8 +45,6 @@ import {
 import { Toast } from '../shared/ui/Toast';
 import { useSafeArea } from '../shared/hooks/useSafeArea';
 import { useNativeToasts } from '../shared/hooks/useNativeToasts';
-import { useCoupons } from '../shared/hooks/useCoupons';
-import { usePromo } from '../shared/hooks/usePromo';
 import { useResponsiveScale } from '../shared/hooks/useResponsiveScale';
 import { useTranslation } from '../i18n';
 import { LanguageProvider } from '../i18n/context';
@@ -175,9 +178,6 @@ function AppContent() {
     [navigationBarHeight, statusBarHeight],
   );
 
-  const { hasActiveCoupon } = useCoupons();
-  const { isPromoActive, is2x1Active } = usePromo();
-
   return (
     <div className={`phone ${stateClass} ${screenClass}`} id="app" style={phoneStyle}>
       <div className="top-strip" />
@@ -192,23 +192,17 @@ function AppContent() {
       {screen !== 'terms' && screen !== 'support' && (
         <BottomTabs
           onShowLogs={() => toggleSheet('logs')}
-          onShowPromo={() => toggleSheet('promo')}
           onShowSupport={() =>
             (screen as any) === 'support' ? setScreen('home') : setScreen('support')
           }
           onShowExtras={() => toggleSheet('extras')}
           onShowAccount={() => toggleSheet('account')}
           onUpdate={handleUpdate}
-          hasActiveCoupons={hasActiveCoupon}
-          promoActive={isPromoActive}
-          is2x1Active={is2x1Active}
           activeSheet={activeSheet}
         />
       )}
 
       <Toast message={toast.message} visible={toast.visible} variant={toast.variant} />
-
-      <PromoBottomSheet isOpen={activeSheet === 'promo'} onClose={() => setActiveSheet(null)} />
 
       <LogsBottomSheet isOpen={activeSheet === 'logs'} onClose={() => setActiveSheet(null)} />
 

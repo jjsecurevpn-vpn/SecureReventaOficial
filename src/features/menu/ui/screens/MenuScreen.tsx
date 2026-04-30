@@ -13,7 +13,7 @@ import {
   toggleHotspot as toggleHotspotAction,
 } from '@/shared/lib/nativeActions';
 import type { HotspotState } from '@/shared/lib/nativeActions';
-import { PremiumCard, MenuRow, GlobalModal } from '@/shared/components';
+import { MenuRow, GlobalModal } from '@/shared/components';
 
 interface MenuItem {
   id: string;
@@ -133,8 +133,6 @@ export const MenuScreen = memo(function MenuScreen({
       <div className="section-header">
         <div className="panel-title">{t('menu.title')}</div>
       </div>
-
-      <PremiumCard />
 
       {showCleanConfirm && (
         <GlobalModal

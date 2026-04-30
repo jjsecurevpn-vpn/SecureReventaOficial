@@ -1,6 +1,5 @@
 import { memo, useCallback, useEffect, useMemo } from 'react';
 import { useVpn } from '@/features/vpn';
-import { getSdk } from '@/features/vpn/api/dtunnelSdk';
 import { Button, Card } from '@/shared/ui';
 import { useSectionStyle } from '@/shared/hooks/useSectionStyle';
 import { useIsMobilePortrait } from '@/shared/hooks/useIsMobilePortrait';
@@ -52,10 +51,6 @@ export const TermsScreen = memo(function TermsScreen() {
   const handleBack = useCallback(() => {
     setScreen('home');
   }, [setScreen]);
-
-  const handleViewFullTerms = useCallback(() => {
-    getSdk()?.app.startWebViewActivity('https://shop.jhservices.com.ar/terminos');
-  }, []);
 
   const sectionStyle = useMemo(
     () => ({
@@ -120,9 +115,6 @@ export const TermsScreen = memo(function TermsScreen() {
               {t('terms.back')}
             </Button>
           )}
-          <Button variant="soft" onClick={handleViewFullTerms} className="full-width">
-            {t('terms.viewFull')}
-          </Button>
         </div>
       </div>
     </section>

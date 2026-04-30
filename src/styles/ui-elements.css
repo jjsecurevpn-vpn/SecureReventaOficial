@@ -170,15 +170,77 @@
 }
 
 /* ── SECCIÓN: LANGUAGE SELECTOR ── */
+.language-selector {
+  position: relative;
+  z-index: 100;
+}
+
 .language-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  width: auto;
+  height: auto;
+  padding: 4px;
   background: transparent;
-  font-size: 18px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.language-btn:active {
+  transform: scale(0.9);
+}
+
+.language-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 140px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: var(--shadow-xl);
+  animation: slideInUp 0.2s ease-out;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.language-option {
+  appearance: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.language-option:hover {
+  background: var(--surface-1);
+  color: var(--accent);
+}
+
+.language-option.active {
+  background: var(--accent-10);
+  color: var(--accent);
+}
+
+.language-option:active {
+  transform: scale(0.98);
 }
 
 /* ── SECCIÓN: CONNECT BUTTON (de connect-button.css) ── */

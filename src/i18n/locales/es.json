@@ -74,7 +74,6 @@
     "logs": "Registros",
     "viewDetails": "Ver detalles",
     "renew": "Renovar",
-    "becomePremium": "Convertirse Premium",
     "back": "Volver"
   },
   "status": {
@@ -195,7 +194,6 @@
     "title": "Términos de Uso y Política",
     "accept": "ACEPTO LOS TÉRMINOS DE USO",
     "back": "VOLVER",
-    "viewFull": "VER TÉRMINOS COMPLETOS",
     "cardsLegalTitle": "Términos Legales",
     "cardsLegalText": "Al utilizar nuestro servicio, aceptas cumplir con todas las leyes y regulaciones aplicables. El usuario es responsable de su uso del servicio y garantiza que no violará ninguna ley, contrato o derecho de terceros.",
     "cardsPrivacyTitle": "Privacidad",
@@ -241,66 +239,7 @@
     "loadErrorTitle": "Error al cargar",
     "restartPrompt": "Por favor, reinicia la aplicación"
   },
-  "premium": {
-    "title": "Premium",
-    "cta": "Comprar o revender",
-    "description": "Accede a planes oficiales o solicita tu app propia para revender con un diseño limpio, sin contacto ni spam.",
-    "buy": "Comprar",
-    "resell": "Revender"
-  },
-  "promo": {
-    "label": "OFERTA",
-    "ariaLabel": "Ver oferta",
-    "title": "Oferta por tiempo limitado",
-    "timerAria": "Tiempo restante",
-    "unit": { "hours": "HRS", "minutes": "MIN" },
-    "cta": "OBTENER",
-    "modal": {
-      "title": "Abrir en navegador",
-      "subtitle": "No se pudo abrir automáticamente en tu navegador predeterminado",
-      "manualHint": "Si prefieres, puedes abrir la oferta manualmente en tu navegador predeterminado.",
-      "openButton": "Abrir en navegador",
-      "copyButton": "Copiar enlace"
-    },
-    "toast": {
-      "opening": "Abriendo en el navegador predeterminado...",
-      "tryOpen": "Intentando abrir...",
-      "copied": "Enlace copiado al portapapeles"
-    },
-    "activeBadge": "Oferta activa",
-    "headTitle": "Aprovechá el descuento antes de que termine",
-    "tabLabel": "Oferta",
-    "specialOffer": "Oferta especial",
-    "endsIn": "Finaliza en",
-    "viewPlans": "Ver planes",
-    "emptyNovedades": "No hay novedades disponibles en este momento.",
-    "limitedTimeNote": "Oferta por tiempo limitado.",
-    "promo2x1Title": "OFERTA 2X1",
-    "promo2x1Subtitle": "Doble dispositivos en tu plan"
-  },
-  "coupon": {
-    "title": "Cupones disponibles",
-    "subtitle": "Aprovecha descuentos exclusivos",
-    "empty": "No hay cupones activos en este momento",
-    "codeLabel": "Código",
-    "badgeLabel": "descuento",
-    "oneUse": "uso restante",
-    "manyUses": "usos restantes",
-    "description": "Aplicable en la compra de cualquier plan",
-    "copied": "Copiado",
-    "copy": "Copiar",
-    "openPlans": "Ver planes",
-    "activeBadge": "Cupones activos",
-    "headTitle": "Tocá un cupón para copiar el código",
-    "tabLabel": "Cupones",
-    "availableList": "Cupones disponibles",
-    "tag": "CUPÓN",
-    "copiedHint": "Código copiado al portapapeles",
-    "copyHint": "Tocar para copiar el código",
-    "applyNote": "Los cupones se aplican al finalizar la compra.",
-    "discount": "Descuento",
-    "remaining": "Usos restantes"
-  },
+
   "logs": {
     "title": "Registros",
     "subtitle": "Ver y copiar los registros de DTunnel",
@@ -353,10 +292,7 @@
   "session": {
     "active": "Sesión activa",
     "greeting": "Hola, {name}",
-    "promoTitle": "Mejora a Premium",
-    "promoMessage": "Actualiza para obtener más servidores, mayor velocidad y sin límites.",
-    "protected": "Tu conexión está protegida. Consulta los datos de tu cuenta cuando lo necesites.",
-    "renewSoon": "Tu plan vence en {days}. Renueva ahora."
+    "protected": "Tu conexión está protegida. Consulta los datos de tu cuenta cuando lo necesites."
   },
   "serverCard": {
     "ariaChooseServer": "Elegir servidor",

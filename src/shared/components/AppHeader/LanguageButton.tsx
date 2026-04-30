@@ -42,7 +42,7 @@ export function LanguageButton({ onLanguageChange }: Props) {
     <div className="language-selector" ref={dropdownRef}>
       <button
         type="button"
-        className="icon-btn hotzone language-btn"
+        className="language-btn"
         onClick={() => setIsOpen(!isOpen)}
         aria-label={t('language.selectLanguage')}
         title={t('language.selectLanguage')}
