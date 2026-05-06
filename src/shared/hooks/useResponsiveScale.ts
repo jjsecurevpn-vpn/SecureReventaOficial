@@ -35,8 +35,8 @@ export function useResponsiveScale() {
       // Límites de escalado:
       // - No menos de 0.85 (evitar que se vea diminuto en móviles mini)
       // - Máximo 1.45 en pantallas muy anchas (foldables/tablets)
-      // - Máximo 1.85 en móviles normales para que los componentes CREZCAN de verdad
-      const maxScaleLimit = width > 550 ? 1.45 : 1.85;
+      // - Máximo 1.25 en móviles normales para mantenerlo refinado y compacto
+      const maxScaleLimit = width > 550 ? 1.45 : 1.25;
       const finalScale = Math.min(Math.max(scale, 0.85), maxScaleLimit);
 
       document.documentElement.style.setProperty('--app-scale', finalScale.toFixed(3));

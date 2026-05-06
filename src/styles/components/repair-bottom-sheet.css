@@ -1,0 +1,104 @@
+/* ===========================================
+   RepairAccountBottomSheet
+   =========================================== */
+
+.repair-bs .bottom-sheet-body {
+  padding: 0;
+}
+
+.repair-content {
+  padding: 16px 20px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.repair-row-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.repair-input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-main);
+  height: 52px;
+  transition: all 0.2s ease;
+}
+
+.repair-input-row:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-20);
+}
+
+.repair-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.repair-input::placeholder {
+  color: var(--muted);
+  opacity: 0.5;
+}
+
+.repair-feedback {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  animation: repair-slide-up 0.3s ease;
+}
+
+@keyframes repair-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.repair-conn-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 11px;
+}
+
+.repair-conn-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.repair-conn-label {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.repair-btn-cta {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}

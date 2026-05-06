@@ -1,0 +1,96 @@
+/* ===========================================
+   Language Selector - Premium Header Styles
+   =========================================== */
+
+.language-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.language-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  transition: transform 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.language-btn:active {
+  transform: scale(0.96);
+  background: var(--cardBg2);
+}
+
+/* Glassmorphism Dropdown */
+.language-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--bg-1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-main);
+  padding: 8px;
+  min-width: 160px;
+  z-index: 1000;
+  box-shadow: var(--shadow-md);
+  animation: dropdown-fade-in 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@keyframes dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.language-option {
+  appearance: none;
+  border: none;
+  background: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: calc(var(--radius-main) - 6px);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.language-option:active {
+  background: var(--cardBg1);
+  color: var(--text-strong);
+}
+
+.language-option.active {
+  background: var(--accent-20);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.language-option.active::after {
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  margin-left: auto;
+  font-size: 11px;
+}

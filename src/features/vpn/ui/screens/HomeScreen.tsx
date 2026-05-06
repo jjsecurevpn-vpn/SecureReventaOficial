@@ -9,9 +9,16 @@ import { useTranslation } from '@/i18n';
 import { keyboardNavigationManager } from '@/core/utils';
 import { ServerCarousel } from '../components/ServerCarousel';
 import { AutoConnectStatus } from '../components/AutoConnectStatus';
+import { useIsMobilePortrait } from '@/shared/hooks/useIsMobilePortrait';
 import type { ServerConfig, Category } from '@/core/types';
 
-export function HomeScreen() {
+export function HomeScreen({
+  onShowAccount,
+  onShowRepair,
+}: {
+  onShowAccount?: () => void;
+  onShowRepair?: () => void;
+}) {
   const { t } = useTranslation();
   const {
     config,
@@ -30,6 +37,7 @@ export function HomeScreen() {
   } = useVpn();
   const { showToast } = useToastContext();
   const sectionStyle = useSectionStyle();
+  const isPortrait = useIsMobilePortrait();
   const connectionState = useConnectionStatus();
   const { isDisconnected, isConnecting, isConnected, isError } = connectionState;
 
@@ -99,6 +107,10 @@ export function HomeScreen() {
     t,
   ]);
 
+  const handleRepair = useCallback(() => {
+    onShowRepair?.();
+  }, [onShowRepair]);
+
   // Navegación original a la pantalla de servidores (para móvil)
   const handleServerCardClick = useCallback(() => {
     setScreen('servers');
@@ -145,6 +157,7 @@ export function HomeScreen() {
     <section className="screen home-screen" style={sectionStyle}>
       <div className="home-main">
         <div className="home-spacer-top" />
+        <div className="home-spacer-top" />
 
         <div className="logo-container">
           <StatusLogo size="large" showStatus />
@@ -154,10 +167,12 @@ export function HomeScreen() {
 
         <div className="server-card-wrapper">
           <div className="server-card">
-            {/* ServerCard solo visible para navegación en móvil (ocultado vía CSS en landscape) */}
-            <div className="server-selector-card-container">
-              <ServerCard config={config} onClick={handleServerCardClick} disabled={false} />
-            </div>
+            {/* ServerCard solo visible para navegación en móvil (Portrait) */}
+            {isPortrait && (
+              <div className="server-selector-card-container">
+                <ServerCard config={config} onClick={handleServerCardClick} disabled={false} />
+              </div>
+            )}
 
             {canEditCredentials && (
               <CredentialFields
@@ -180,21 +195,25 @@ export function HomeScreen() {
             <ConnectButton
               state={connectButtonState}
               onClick={handleConnect}
+              onRepairClick={handleRepair}
+              onAccountClick={onShowAccount}
               autoMode={autoMode}
               onAutoModeChange={setAutoMode}
             />
           </div>
         </div>
 
-        {/* Carrusel de Servidores integrado directamente en el Home */}
-        <div className="home-carousel-container">
-          <ServerCarousel
-            categorias={categorias}
-            currentConfig={config}
-            onSelectServer={handleSelectServer}
-            autoMode={autoMode}
-          />
-        </div>
+        {/* Carrusel de Servidores integrado directamente en el Home (Solo Landscape) */}
+        {!isPortrait && (
+          <div className="home-carousel-container">
+            <ServerCarousel
+              categorias={categorias}
+              currentConfig={config}
+              onSelectServer={handleSelectServer}
+              autoMode={autoMode}
+            />
+          </div>
+        )}
 
         <div className="home-spacer-bottom" />
       </div>

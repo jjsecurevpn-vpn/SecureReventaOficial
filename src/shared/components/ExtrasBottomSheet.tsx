@@ -28,6 +28,7 @@ interface ExtrasBottomSheetProps {
   onClose: () => void;
   onShowImport?: () => void;
   onShowSupport?: () => void;
+  onShowRepair?: () => void;
 }
 
 export const ExtrasBottomSheet = memo(function ExtrasBottomSheet({
@@ -35,6 +36,7 @@ export const ExtrasBottomSheet = memo(function ExtrasBottomSheet({
   onClose,
   onShowImport,
   onShowSupport,
+  onShowRepair,
 }: ExtrasBottomSheetProps) {
   const { t } = useTranslation();
   const { setScreen } = useVpn();
@@ -143,6 +145,15 @@ export const ExtrasBottomSheet = memo(function ExtrasBottomSheet({
       icon: 'fa-file-import',
       action: () => {
         onShowImport?.();
+      },
+    },
+    {
+      id: 'repair',
+      title: t('menu.repairTitle') || 'Reparar Cuenta',
+      subtitle: t('menu.repairSubtitle') || 'Sincronización Servex',
+      icon: 'fa-magic',
+      action: () => {
+        onShowRepair?.();
       },
     },
   ];

@@ -11,14 +11,10 @@
   --border: rgba(248, 247, 255, 0.14);
   --accent: #6d4aff;
   --accent-2: #5b3fd6;
-  --accent-10: rgba(109, 74, 255, 0.1);
-  --accent-15: rgba(109, 74, 255, 0.15);
   --accent-20: rgba(109, 74, 255, 0.2);
-  --accent-30: rgba(109, 74, 255, 0.3);
   --focus-accent: #5b2bff;
   --focus-accent-15: rgba(91, 43, 255, 0.15);
   --focus-accent-20: rgba(91, 43, 255, 0.2);
-  --primary-blue: #007aff;
   --status-ok: #22c55e;
   --status-warn: #f59e0b;
   --status-bad: #ef4444; /* Rojo vibrante */
@@ -26,7 +22,6 @@
   --status-bad-55: rgba(239, 68, 68, 0.55);
   --status-bad-20: rgba(239, 68, 68, 0.2);
   --overlay: rgba(0, 0, 0, 0.62);
-  --bg-dark: #08080a;
   --scale-factor: var(--app-scale, 1);
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'DM Serif Display', serif;
@@ -53,13 +48,17 @@
     --font-xl: calc(20px * var(--scale-factor));
     --font-2xl: calc(24px * var(--scale-factor));
 
-    --radius-sm: calc(10px * var(--scale-factor));
-    --radius-md: calc(12px * var(--scale-factor));
-    --radius-lg: calc(16px * var(--scale-factor));
-    --radius-xl: calc(20px * var(--scale-factor));
+    /* Alias para consistencia con base.css */
+    --text-base: var(--font-base);
 
-    --btn-height: calc(42px * var(--scale-factor));
-    --input-height: calc(42px * var(--scale-factor));
+    --radius-main: calc(14px * var(--scale-factor));
+    --radius-sm: var(--radius-main);
+    --radius-md: var(--radius-main);
+    --radius-lg: var(--radius-main);
+    --radius-xl: var(--radius-main);
+
+    --btn-height: calc(40px * var(--scale-factor));
+    --input-height: calc(40px * var(--scale-factor));
     --icon-size: calc(24px * var(--scale-factor));
     --flag-size: calc(26px * var(--scale-factor));
 
@@ -71,8 +70,8 @@
     --toggle-height: calc(32px * var(--scale-factor));
     --thumb-size: calc(24px * var(--scale-factor));
 
-    /* Límite dinámico — Aumentado a 140px para asegurar separación clara */
-    --tabs-space: calc((135px + var(--safe-area-bottom, 0px)) * var(--scale-factor));
+    /* Límite dinámico — Aumentado para asegurar que nada quede solapado con los BottomTabs */
+    --tabs-space: calc((140px + var(--safe-area-bottom, 0px)) * var(--scale-factor));
   }
 
   body.keyboard-open {

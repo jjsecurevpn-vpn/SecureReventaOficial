@@ -20,9 +20,22 @@ export interface ConnectButtonProps {
 
   /** Callback para cambiar Auto Mode */
   onAutoModeChange: (value: boolean) => void;
+
+  /** Callback para abrir detalles de cuenta */
+  onAccountClick?: () => void;
+
+  /** Callback para abrir reparación de cuenta */
+  onRepairClick?: () => void;
 }
 
-export function ConnectButton({ state, onClick, autoMode, onAutoModeChange }: ConnectButtonProps) {
+export function ConnectButton({
+  state,
+  onClick,
+  autoMode,
+  onAutoModeChange,
+  onAccountClick,
+  onRepairClick,
+}: ConnectButtonProps) {
   const { t } = useTranslation();
 
   const buttonText = {
@@ -34,9 +47,20 @@ export function ConnectButton({ state, onClick, autoMode, onAutoModeChange }: Co
   }[state];
 
   const isDanger = state === 'connected' || state === 'error';
+  const showAccount = state === 'connected' && onAccountClick;
 
   return (
     <div className="connect-button">
+      {onRepairClick && (
+        <Button variant="default" onClick={onRepairClick} className="btn-repair" data-nav>
+          <i className="fa fa-magic" />
+        </Button>
+      )}
+      {showAccount && (
+        <Button variant="default" onClick={onAccountClick} className="btn-account" data-nav>
+          <i className="fa fa-user" />
+        </Button>
+      )}
       <Button variant="primary" onClick={onClick} className={isDanger ? 'danger' : ''} data-nav>
         {buttonText}
       </Button>

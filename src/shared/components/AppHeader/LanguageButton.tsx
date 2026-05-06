@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
-import { useLanguage } from '../../../i18n/context';
-import type { Language } from '../../../i18n/types';
+import { useLanguage } from '@/i18n/context';
+import type { Language } from '@/i18n/types';
+import '@/styles/components/language-selector.css';
 
 interface Props {
   onLanguageChange?: (lang: Language) => void;

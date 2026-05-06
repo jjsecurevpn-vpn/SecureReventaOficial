@@ -41,6 +41,7 @@ import {
   LogsBottomSheet,
   AccountBottomSheet,
   ImportBottomSheet,
+  RepairAccountBottomSheet,
 } from '../shared/components';
 import { Toast } from '../shared/ui/Toast';
 import { useSafeArea } from '../shared/hooks/useSafeArea';
@@ -71,7 +72,11 @@ import type { ScreenType, ActiveSheet } from '../core/types';
  */
 const SCREEN_COMPONENTS: Record<
   ScreenType,
-  React.ComponentType<{ onShowAccount?: () => void; onShowSupport?: () => void }>
+  React.ComponentType<{
+    onShowAccount?: () => void;
+    onShowSupport?: () => void;
+    onShowRepair?: () => void;
+  }>
 > = {
   // VPN Feature (features/vpn/ui/screens/)
   home: HomeScreen, // VPN home screen
@@ -179,7 +184,11 @@ function AppContent() {
   );
 
   return (
-    <div className={`phone ${stateClass} ${screenClass}`} id="app" style={phoneStyle}>
+    <div
+      className={`phone ${stateClass} ${screenClass} ${activeSheet ? 'has-open-sheet' : ''}`}
+      id="app"
+      style={phoneStyle}
+    >
       <div className="top-strip" />
 
       {screen !== 'terms' && <AppHeader onMenuClick={() => toggleSheet('extras')} />}
@@ -187,6 +196,7 @@ function AppContent() {
       <ScreenComponent
         onShowAccount={() => toggleSheet('account')}
         onShowSupport={() => setScreen('support')}
+        onShowRepair={() => toggleSheet('repair')}
       />
 
       {screen !== 'terms' && screen !== 'support' && (
@@ -208,6 +218,11 @@ function AppContent() {
 
       <AccountBottomSheet isOpen={activeSheet === 'account'} onClose={() => setActiveSheet(null)} />
 
+      <RepairAccountBottomSheet
+        isOpen={activeSheet === 'repair'}
+        onClose={() => setActiveSheet(null)}
+      />
+
       <ImportBottomSheet isOpen={activeSheet === 'import'} onClose={() => setActiveSheet(null)} />
 
       <ExtrasBottomSheet
@@ -218,6 +233,7 @@ function AppContent() {
           setActiveSheet(null);
           setScreen('support');
         }}
+        onShowRepair={() => setActiveSheet('repair')}
       />
     </div>
   );
